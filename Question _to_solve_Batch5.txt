@@ -1,0 +1,76 @@
+Question 1
+
+Create Price Point Column : Logic below 
+
+> if productprice is greater than $500 then "High"
+
+> between 100 and 500 "mid range"
+
+> less than or equal to 100 "low"
+
+PricePoint = IF(Products_Lookup[ProductPrice]>500, " High",IF(Products_Lookup[ProductPrice]>100,"Mid_Range","Low") )
+
+
+Question 2 
+
+Create a measure called All Returns (similar to all orders we had created earlier  - Answer should be 1809
+
+AllReturns = CALCULATE([TotalReturns],ALL(Returns)) 
+
+Question 3
+
+Create a measure  called "% of all Returns" - answer should be 61.64% for accesories product
+
+% of All Returns = [TotalReturns]/[ALL Returns]
+
+
+Question 4
+
+Create a measure name Bike Returns to calculate total returns for bikes -- answer should be 427
+
+
+BikeReturns = CALCULATE([TotalReturns], Product_Categories[CategoryName]= "Bikes")
+
+
+Question 5 
+
+Create a measure named "Total Cost" by mutliplying order quantities by product costs at row level - answer should be $1,456,986
+
+TotalCost = SUMX(AW_Sales, AW_Sales[OrderQuantity]*RELATED(Products_Lookup[ProductCost]))
+
+Question 6
+
+Create Total Profit , defined as Total Revenue minus Total Cost -- Answer should be $10,457,580
+
+
+TotalProfit = [TotalRevenue]-[TotalCost]
+
+
+Question 7
+Create a measure to calculate Total Order for Previous month (name it as "Prev Month Order")
+
+PrevMonthOrders = CALCULATE([TotalOrders], DATEADD(Calendar_Lookup[Date],-1,MONTH))
+
+Question 8 : 
+
+Create a measure named "Order Target", calculated as a 10% lift over the previous month 
+
+OrderTarget = [PrevMonthOrders]*1.1 
+
+
+Question 9 :
+
+•	Total Returns for the previous month (named "Prev Month Returns") 
+
+
+Question 10 : Rolling Profit (named "90-day Rolling Profit") 
+
+
+90-dayRollingProfit = 
+
+
+10-dayRollingRevenue = 
+
+
+
+
